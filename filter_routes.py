@@ -26,7 +26,7 @@ try:
 except:
     pass
 
-print("Excluded routes:", EXCLUDED_ROUTES + '\n')
+print("Excluded routes:", EXCLUDED_ROUTES)
 
 mp_df = pandas.read_csv(MNTPROJ_TICKS_CSV, dtype=str)
 
