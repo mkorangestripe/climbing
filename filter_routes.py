@@ -22,11 +22,12 @@ MNTPROJ_TICKS_CSV = sys.argv[1]
 try:
     with open(EXCLUDE_ROUTES_TXT, "r", encoding="utf-8") as exclude_routes_data:
         for route in exclude_routes_data:
-            EXCLUDED_ROUTES = EXCLUDED_ROUTES.strip() + '|' + route
+            EXCLUDED_ROUTES = EXCLUDED_ROUTES + '|' + route.strip()
 except:
     pass
 
 print("Excluded routes:", EXCLUDED_ROUTES)
+print()
 
 mp_df = pandas.read_csv(MNTPROJ_TICKS_CSV, dtype=str)
 
