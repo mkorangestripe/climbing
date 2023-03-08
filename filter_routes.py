@@ -32,15 +32,15 @@ print()
 mp_df = pandas.read_csv(MNTPROJ_TICKS_CSV, dtype=str)
 
 print("WI3-4 or harder, send")
-WI4 = mp_df[mp_df.Rating.str.contains("WI3-4|WI4|WI4-5|WI5") &
+WI4 = mp_df[(mp_df.Rating.str.contains("WI3-4|WI4|WI4-5|WI5") | mp_df["Your Rating"].str.contains("WI3-4|WI4|WI4-5|WI5")) &
             mp_df["Lead Style"].str.contains("Onsight|Flash|Redpoint") &
            (mp_df.Route.str.contains(EXCLUDED_ROUTES)==False)]
 print(WI4)
 print()
 
-print("M5 or harder, any lead")
-M5 = mp_df[mp_df.Rating.str.contains("M[5-9]") &
-          (mp_df["Style"] == "Lead") &
+print("M5 or harder, send")
+M5 = mp_df[(mp_df.Rating.str.contains("M[5-9]") | mp_df["Your Rating"].str.contains("M[5-9]"))&
+          mp_df["Lead Style"].str.contains("Onsight|Flash|Redpoint") &
           (mp_df.Route.str.contains(EXCLUDED_ROUTES)==False)]
 print(M5)
 print()
